@@ -8,3 +8,28 @@
   letter-spacing: -1px;
   font-weight: bold;
 }
+.center .jumbotron .p-5{
+  background-image: asset-url('animesh-bhargava.jpg');
+  background-size: cover;
+}
+.container, .container-fluid{
+  width: auto;
+}
+
+footer{
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #bfbfbf;
+  color: #808080;
+}
+footer small{
+  float: left;
+}
+footer ul{
+  float: right;
+  list-style: none;
+}
+footer ul li{
+  float: left;
+  margin-left: 15px;
+}
