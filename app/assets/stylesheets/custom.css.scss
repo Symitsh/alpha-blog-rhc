@@ -15,6 +15,12 @@
 .container, .container-fluid{
   width: auto;
 }
+.article-action{
+  border-top: 1px solid #bfbfbf;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+
 
 /* footer */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -102,7 +108,7 @@ ul{
   background-color: #ffffff;
 }
 
-/*responsive*/
+/*responsive footer*/
 @media(max-width: 767px){
   .footer-col{
     width: 50%;
