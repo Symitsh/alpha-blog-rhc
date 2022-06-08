@@ -15,7 +15,11 @@
           <td><%= link_to article.title, article_path(article) %></td>
           <td><%= truncate(article.description, length:60) %></td>
           <td><%= link_to "Editer", edit_article_path(article), class:"btn btn-xs btn-primary" %></td>
-          <td><%= link_to "Supprimer", article_path(article), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class:"btn btn-xs btn-danger" %></td>
+          <td><%= link_to "Supprimer", article_path(article),
+                    data: { "turbo-method": :delete,
+                      controller: "confirmation",
+                      "confirmation-message-value": 'Are you sure?',
+                      action: "confirmation#confirm"}, class:"btn btn-xs btn-danger" %></td>
         </tr>
       <% end %>
     </table>

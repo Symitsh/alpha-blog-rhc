@@ -10,12 +10,12 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @article = Article.find(params[:id])
   end
 
   def create
     @article = Article.new(article_params)
     if @article.save
-      # On affiche l'article
       flash[:success] = "Article bel et bien crée"
       redirect_to article_path(@article)
     else
@@ -25,6 +25,8 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article = Article.find(params[:id])
+
     if @article.update(article_params)
       flash[:success] = "Article bel et bien modifié"
       redirect_to article_path(@article)
@@ -37,9 +39,11 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    @article = Article.find(params[:id])
     @article.destroy
+
     flash[:danger] = "Article supprimé"
-    redirect_to articles_path
+    redirect_to articles_path, status: :see_other
   end
 
   private
