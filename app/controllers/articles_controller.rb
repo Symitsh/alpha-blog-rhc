@@ -15,11 +15,11 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user = User.first
     if @article.save
       flash[:success] = "Article bel et bien crée"
       redirect_to article_path(@article)
     else
-      # ça n'a pas marcher
       render 'new', status: :unprocessable_entity
     end
   end
