@@ -11,6 +11,8 @@
           <th>Actions</th>
         </tr>
       </thead>
+
+
       <% @articles.each do |article| %>
         <tr>
           <td><%= link_to article.title, article_path(article) %></td>
