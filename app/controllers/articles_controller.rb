@@ -37,9 +37,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
-
     flash[:danger] = "Article supprimé"
     redirect_to articles_path, status: :see_other
   end
