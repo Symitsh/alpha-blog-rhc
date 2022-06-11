@@ -9,6 +9,12 @@ gem "rails", "~> 7.0.3"
 # https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html
 gem 'bcrypt', '~> 3.1.7'
 
+# https://github.com/mislav/will_paginate
+gem 'will_paginate', '~> 3.3'
+
+# https://github.com/delef/will_paginate-bootstrap-style
+gem 'will_paginate-bootstrap-style'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
