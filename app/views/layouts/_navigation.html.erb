@@ -25,7 +25,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+          <li><%= link_to "Se déconnecter", logout_path,  data: { "turbo-method": :delete, turbo_confirm:'Etes vous sûr?' } %></li>
         </li>
       </ul>
       <form class="d-flex">
