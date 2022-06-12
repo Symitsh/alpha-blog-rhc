@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, lonly: [:edit, :update, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.paginate(:page => params[:page], :per_page => 5)
@@ -44,4 +45,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
+
+  def require_same_user
+    if current_user != @user
+      flash[:danger] = "Vous ne pouvez pas modifier cet utilisateur"
+      redirect_to root_path
+    end
+  end
+
 end
