@@ -1,22 +1,27 @@
 <h1 align="center">List des utilisateurs</h1>
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
-  <div align="center">
+    <div align="center">
       <%= will_paginate @users %>
     </div>
     <ul class="list-group">
       <% @users.each do |user| %>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            <%= gravatar_for 'user', size:25 %>
-            <%= link_to user.username, user_path(user) %>
-          </h3>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <%= gravatar_for 'user', size:25 %>
+              <%= link_to user.username, user_path(user) %>
+              <% if logged_in? && current_user.admin? %>
+                <%= link_to "Supprimer l'utilisateur", user_path(user),
+                        data: { "turbo-method": :delete, "confirm": "Êtes-vous sûr de vouloir supprimer cet utilisateur ?" },
+                        class: "btn btn-xs btn-danger" %>
+              <% end %>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <p><%= pluralize(user.articles.count, "article") if user.articles %></p>
+          </div>
         </div>
-        <div class="panel-body">
-          <p><%= pluralize(user.articles.count, "article") if user.articles %></p>
-        </div>
-      </div>
       <% end %>
     </ul>
     <div align="center">

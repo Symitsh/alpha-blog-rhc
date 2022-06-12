@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
   def update
     if @article.update(article_params)
       flash[:success] = "Article bel et bien modifié"
-      redirect_to article_path(@article)
+      redirect_to article_path(@article), status: :see_other
     else
       render 'edit', status: :unprocessable_entity
     end
@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    flash[:danger] = "Article supprimé"
+    flash[:success] = "Article supprimé avec succès"
     redirect_to articles_path, status: :see_other
   end
 
@@ -54,9 +54,9 @@ class ArticlesController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @article.user
+    if current_user != @article.user && !current_user.admin?
       flash[:danger] = "Vous ne pouvez pas modifier cet article"
-      redirect_to root_path
+      redirect_to root_path, status: :see_other
     end
   end
 

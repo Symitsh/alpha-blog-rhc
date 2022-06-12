@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def require_user
     if !logged_in?
       flash[:danger] = "Vous devez être connecté pour effectuer cette action"
-      redirect_to root_path
+      redirect_to root_path, status: :see_other
     end
   end
 
