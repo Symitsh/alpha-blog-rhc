@@ -24,9 +24,16 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <li><%= link_to "Se déconnecter", logout_path,  data: { "turbo-method": :delete, turbo_confirm:'Etes vous sûr?' } %></li>
-        </li>
+        <% if logged_in? %>
+          <li class="nav-item">
+            <li><%= link_to "Se déconnecter", logout_path,  data: { "turbo-method": :delete, turbo_confirm:'Etes vous sûr?' } %></li>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <li><%= link_to "Se connecter", login_path %>
+            <li><%= link_to "S'inscrire", signup_path %>
+          </li>
+        <% end %>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
